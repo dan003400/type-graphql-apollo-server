@@ -1,5 +1,4 @@
 import { Resolver, Query, Arg, Ctx, Mutation, ResolverInterface, Authorized } from 'type-graphql'
-import { plainToClass } from 'class-transformer'
 import { Context, AuthContext, AuthUser } from '../../types/context'
 import { encode } from '../../utils/auth'
 
@@ -26,8 +25,8 @@ export class AuthResolver {
 
     const token = await encode({ userId: users[0].id, email: users[0].email } as AuthUser)
 
-    return plainToClass(Session, {
+    return {
       token,
-    })
+    }
   }
 }
