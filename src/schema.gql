@@ -4,18 +4,12 @@
 # -----------------------------------------------
 
 type Mutation {
-  createSession(data: SessionInput!): Session!
+  createSession(data: SessionInput!): SessionType!
 }
 
 type Query {
   hello: String!
   test: String!
-}
-
-"""Object representing auth session"""
-type Session {
-  """Token to be used in Authorization header"""
-  token: String!
 }
 
 input SessionInput {
@@ -24,4 +18,10 @@ input SessionInput {
 
   """The user password"""
   password: String!
+}
+
+"""Object representing auth session"""
+type SessionType {
+  """Token to be used in Authorization header"""
+  token: String!
 }

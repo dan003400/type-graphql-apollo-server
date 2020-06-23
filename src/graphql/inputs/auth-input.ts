@@ -1,4 +1,3 @@
-import { Session } from '../types/auth-type'
 import { InputType, Field } from 'type-graphql'
 
 @InputType()

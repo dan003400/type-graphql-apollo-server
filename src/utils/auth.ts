@@ -1,8 +1,7 @@
 import jwt from 'jsonwebtoken'
-import { AuthUser } from '../types/context'
-import { ProcessEnv } from '../types/env'
+import { AuthUserType } from '../types/context'
 
-export const encode = async (user: AuthUser): Promise<string> => {
+export const encode = async (user: AuthUserType): Promise<string> => {
   try {
     return (await jwt.sign(user, process.env.JWT_SECRET as string)) as string
   } catch (err) {
@@ -10,9 +9,9 @@ export const encode = async (user: AuthUser): Promise<string> => {
   }
 }
 
-export const decode = async (token: string): Promise<AuthUser> => {
+export const decode = async (token: string): Promise<AuthUserType> => {
   try {
-    return (await jwt.verify(token, String(process.env.JWT_SECRET) as string)) as AuthUser
+    return (await jwt.verify(token, String(process.env.JWT_SECRET) as string)) as AuthUserType
   } catch (err) {
     throw new Error('Invalid Authorization Token: ' + err.message)
   }

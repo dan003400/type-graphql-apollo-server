@@ -1,15 +1,15 @@
 import { PrismaClient } from '@prisma/client'
 
-export interface AuthUser {
+export interface AuthUserType {
   userId: int
   email: string
 }
 
-export interface Context {
+export interface ContextType {
   prisma: PrismaClient
 }
 
-export interface AuthContext {
+export interface AuthContextType {
   prisma: PrismaClient
   authUser: AuthUser
 }
